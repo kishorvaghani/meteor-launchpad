@@ -45,6 +45,9 @@ ONBUILD ENV INSTALL_PHANTOMJS ${INSTALL_PHANTOMJS:-true}
 ONBUILD ARG INSTALL_GRAPHICSMAGICK
 ONBUILD ENV INSTALL_GRAPHICSMAGICK ${INSTALL_GRAPHICSMAGICK:-true}
 
+ONBUILD ARG INSTALL_WKHTMLTOPDF
+ONBUILD ENV INSTALL_WKHTMLTOPDF ${INSTALL_WKHTMLTOPDF:-true}
+
 # optionally custom apt dependencies at app build time
 ONBUILD RUN if [ "$APT_GET_INSTALL" ]; then apt-get update && apt-get install -y $APT_GET_INSTALL; fi
 
@@ -52,6 +55,7 @@ ONBUILD RUN if [ "$APT_GET_INSTALL" ]; then apt-get update && apt-get install -y
 ONBUILD RUN bash $BUILD_SCRIPTS_DIR/install-phantom.sh
 ONBUILD RUN bash $BUILD_SCRIPTS_DIR/install-mongo.sh
 ONBUILD RUN bash $BUILD_SCRIPTS_DIR/install-graphicsmagick.sh
+ONBUILD RUN bash $BUILD_SCRIPTS_DIR/install-wkhtmltopdf.sh
 
 # Node flags for the Meteor build tool
 ONBUILD ARG TOOL_NODE_FLAGS
