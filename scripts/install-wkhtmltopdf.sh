@@ -10,7 +10,7 @@ fi
 if [ "$INSTALL_WKHTMLTOPDF" = true ]; then
   printf "\n[-] Installing wkhtmltopdf...\n\n"
 
-  WKHTMLTOPDF="wkhtmltox-$WKHTMLTOPDF_VERSION_linux-generic-amd64"
+  WKHTMLTOPDF="wkhtmltox-${WKHTMLTOPDF_VERSION}_linux-generic-amd64"
 
   apt-get update
   apt-get install -y wget chrpath libssl-dev libxft-dev
